@@ -17,6 +17,16 @@ export default function Index({posts: posts}) {
 }
 
 export async function getServerSideProps(context) {
+    const res = await fetch("https://cocre.microcms.io/api/v1/works", {
+        headers: {
+       "X-API-KEY": "dab4d32d-1f4b-44f4-a76d-3020cb4f92fe"
+        }
+    });
+    const body = await res.json()
+    console.log(body)
+
+
+
     return {
       props: {
           posts: [

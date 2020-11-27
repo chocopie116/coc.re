@@ -48,39 +48,27 @@ export default function Index({ posts: posts }) {
         <div id="main">
           <div className="inner" id="projects">
             <header className="major">
-              <h2>Projects</h2>
+              <h2>Works</h2>
             </header>
           </div>
 
           <section id="one" className="tiles">
-            <article
-              style={{ backgroundImage: `url(${"/img/projects/zero9.jpg"})` }}
-            >
-              <a href="https://chocopie116.me/projects/e-scooter/">
-                <span className="image">
-                  <img src="/img/projects/zero9.jpg" alt="" />
-                </span>
-                <header className="major">
-                  <h3>電動キックボードの社会実装</h3>
-                  <p>法律と向き合うこと・新しい文化をつくる挑戦</p>
-                </header>
-              </a>
-            </article>
-            <article
-              style={{
-                backgroundImage: `url(${"/img/projects/agriculture.jpg"})`,
-              }}
-            >
-              <a href="https://chocopie116.me/projects/e-scooter/">
-                <span className="image">
-                  <img src="/img/projects/zero9.jpg" alt="" />
-                </span>
-                <header className="major">
-                  <h3>電動キックボードの社会実装</h3>
-                  <p>法律と向き合うこと・新しい文化をつくる挑戦</p>
-                </header>
-              </a>
-            </article>
+            {posts.map((p) => {
+              return (
+                <article
+                  style={{
+                    backgroundImage: `url(${p.thumbnail})`,
+                  }}
+                >
+                  <a href="https://chocopie116.me/projects/e-scooter/">
+                    <header className="major">
+                      <h3>{p.title}</h3>
+                      <p>法律と向き合うこと・新しい文化をつくる挑戦</p>
+                    </header>
+                  </a>
+                </article>
+              );
+            })}
           </section>
 
           <section id="two">
@@ -98,4 +86,31 @@ export default function Index({ posts: posts }) {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps(context) {
+  const res = await fetch("https://cocre.microcms.io/api/v1/works", {
+    headers: {
+      "X-API-KEY": "dab4d32d-1f4b-44f4-a76d-3020cb4f92fe",
+    },
+  });
+  const body = await res.json();
+  console.log(body);
+
+  return {
+    props: {
+      posts: [
+        {
+          id: "dfdsafdasfdsa",
+          title: "test",
+          thumbnail: "https://chocopie116.me/img/projects/zero9.jpg",
+        },
+        {
+          id: "dfdsafdasfdsa",
+          title: "test",
+          thumbnail: "https://chocopie116.me/img/projects/zero9.jpg",
+        },
+      ],
+    },
+  };
 }

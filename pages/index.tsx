@@ -6,7 +6,7 @@ export default function Index({ posts: posts }) {
       <div id="wrapper">
         <header id="header" className="alt">
           <a href="index.html" className="logo">
-            <strong>about me</strong>
+            <strong>株式会社コクリ</strong>
           </a>
           <nav>
             <a href="index.html#menu"></a>
@@ -88,19 +88,7 @@ export default function Index({ posts: posts }) {
               <header className="major">
                 <h2>Contact</h2>
               </header>
-              <p>
-                以下のいずれでも構いませんので気軽に連絡ください。何かよい出会いになると嬉しいです。
-              </p>
-              <ul>
-                <li>ページ記載のProjectに興味がある</li>
-                <li>
-                  Webシステム開発でメンバーが足りないので、仕事をお願いしたい
-                </li>
-                <li>
-                  新規事業を行うので幅広くやれるメンバーに最初の立ち上げを手伝ってほしい
-                </li>
-                <li>やりたいことがあるので一緒にやれる仲間が欲しい</li>
-              </ul>
+              <p>相談・雑談歓迎します。</p>
               <a href="https://m.me/chocopie116" target="_blank">
                 <img src="img/contactme.png" />
               </a>

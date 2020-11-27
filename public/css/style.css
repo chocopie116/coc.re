@@ -1,0 +1,6 @@
+.projects img {
+  width:  95%;
+  display: block;
+  margin-left: auto;/*これでもOK*/
+  margin-right: auto;/*これでもOK*/
+}

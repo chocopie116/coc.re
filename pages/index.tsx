@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Index({ posts: posts }) {
+export default function Index({ works: works }) {
   return (
     <>
       <div id='wrapper'>
@@ -53,7 +53,7 @@ export default function Index({ posts: posts }) {
           </div>
 
           <section id='one' className='tiles'>
-            {posts.map((p) => {
+            {works.map((p) => {
               return (
                 <article
                   key={p.id}
@@ -61,27 +61,14 @@ export default function Index({ posts: posts }) {
                     backgroundImage: `url(${p.thumbnail})`,
                   }}
                 >
-                  <a href='/works/e-scooter/'>
+                  <a href={`/works/${p.id}`}>
                     <header className='major'>
-                      <h3>{p.title}</h3>
-                      <p>法律と向き合うこと・新しい文化をつくる挑戦</p>
+                      <p>{p.title}</p>
                     </header>
                   </a>
                 </article>
               );
             })}
-          </section>
-
-          <section id='two'>
-            <div className='inner'>
-              <header className='major'>
-                <h2>Contact</h2>
-              </header>
-              <p>相談・雑談歓迎します。</p>
-              <a href='https://m.me/chocopie116' target='_blank'>
-                <img src='img/contactme.png' />
-              </a>
-            </div>
           </section>
         </div>
       </div>
@@ -95,23 +82,23 @@ export async function getServerSideProps(context) {
       'X-API-KEY': 'dab4d32d-1f4b-44f4-a76d-3020cb4f92fe',
     },
   });
-  const body = await res.json();
-  console.log(body);
+  const body: WorksResponse = await res.json();
+  const works = body.contents;
+  //TODO とりあえず
+  works.push(body.contents[0]);
+  works.push(body.contents[0]);
+  works.push(body.contents[0]);
+  works.push(body.contents[0]);
 
   return {
     props: {
-      posts: [
-        {
-          id: 'dfdsafdasfdsa',
-          title: 'test',
-          thumbnail: 'https://chocopie116.me/img/projects/zero9.jpg',
-        },
-        {
-          id: 'dfdsafdasfdsaa',
-          title: 'test',
-          thumbnail: 'https://chocopie116.me/img/projects/zero9.jpg',
-        },
-      ],
+      works: works.map((w) => {
+        return {
+          id: w.id,
+          title: w.title,
+          thumbnail: w.thumbnail.url,
+        };
+      }),
     },
   };
 }

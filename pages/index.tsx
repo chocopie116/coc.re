@@ -61,7 +61,7 @@ export default function Index({ posts: posts }) {
                     backgroundImage: `url(${p.thumbnail})`,
                   }}
                 >
-                  <a href='https://chocopie116.me/projects/e-scooter/'>
+                  <a href='/works/e-scooter/'>
                     <header className='major'>
                       <h3>{p.title}</h3>
                       <p>法律と向き合うこと・新しい文化をつくる挑戦</p>

@@ -19,6 +19,8 @@ interface WorksResponse {
   limit: number;
 }
 
+type WorkDetailResponse = Work;
+
 interface MyWork {
   id: string;
   title: string;
